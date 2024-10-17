@@ -1,6 +1,3 @@
-from ast import Return
-
-
 def menu():
     print("Agenda de contactos:\n")
     print("1 - Agregar contacto")
@@ -33,7 +30,6 @@ def mostrar_agenda(agenda):
             print("-" * 20)
     else:
         print("¡La agenda esta vacía!")
-        print("\n")
     print("\n")
 
 
@@ -60,6 +56,7 @@ def eliminar_contacto(agenda):
         print("Contacto eliminado exitosamente")
     else:
         print("No se encontró el contacto a eliminar")
+        print("\n")
 
 
 def menu_editar():
@@ -90,6 +87,7 @@ def editar_numero(agenda, contacto):
 def editar_correo(agenda, contacto):
     nuevo_correo = input("Ingresa el nuevo correo: ")
     agenda[contacto]["correo"] = nuevo_correo
+    print("Correo editado correctamente")
 
 
 def editar_contacto(agenda):
@@ -98,6 +96,9 @@ def editar_contacto(agenda):
     contacto = contacto.strip(" ")
     while True:
         if contacto in agenda:
+            print(f"Nombre: {contacto}")
+            print(f"Telefono: {agenda[contacto]['telefono']}")
+            print(f"Correo: {agenda[contacto]['correo']}")
             menu_editar()
             opcion = input("Ingresa la opción que de deseas editar: ")
             if opcion == "1":
@@ -110,8 +111,12 @@ def editar_contacto(agenda):
                 editar_correo(agenda, contacto)
             else:
                 print("Selecciona una opción valida")
+                print("\n")
         else:
+            print("\n")
             print("El contacto no existe")
+            print("\n")
+            break
 
 
 def agenda():

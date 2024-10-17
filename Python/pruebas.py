@@ -1,0 +1,1 @@
+print([i for i in range(22) if i % 2 == 0])

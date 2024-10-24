@@ -1,0 +1,24 @@
+El parámetro skipinitialspace=True en la función pd.read_csv() le indica a Pandas que ignore los espacios en blanco después de las comas que separan los valores en un archivo CSV. Este comportamiento es útil cuando los valores en un archivo CSV tienen espacios adicionales después de las comas, lo que puede generar problemas al procesar los datos.
+
+Ejemplo con skipinitialspace=True
+En tu archivo archivo.txt, los nombres de las columnas y los valores tienen un espacio después de las comas. Al usar este parámetro, Pandas eliminará esos espacios, lo que facilita trabajar con los datos.
+
+Código actualizado:
+python
+Copiar código
+import pandas as pd
+
+# Leer el archivo CSV, eliminando los espacios extra después de las comas
+df = pd.read_csv("c:/Users/camil/OneDrive/Escritorio/Desde 0/Python/archivos/archivo.txt", skipinitialspace=True)
+
+# Ordenar por la columna 'edad'
+df_organizado = df.sort_values("edad")
+
+# Mostrar el DataFrame organizado
+print(df_organizado)
+¿Por qué usar skipinitialspace=True?
+En tu archivo archivo.txt, las columnas están separadas por comas, pero después de cada coma hay un espacio. Si no usas skipinitialspace=True, esos espacios adicionales formarán parte del nombre de las columnas, lo que hace que Pandas no pueda encontrar columnas como 'edad' porque el nombre correcto sería algo como ' edad' (con espacio).
+
+Con skipinitialspace=True, Pandas ignora estos espacios y trata correctamente los nombres de las columnas y los valores.
+
+Si esto no resuelve el problema, revisa la ubicación del archivo y la estructura del mismo por posibles errores adicionales.

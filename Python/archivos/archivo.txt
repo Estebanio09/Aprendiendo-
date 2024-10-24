@@ -1,4 +1,4 @@
-nombre, apellido, edad 
+nombre,apellido,edad
 lucas, dalto, 97
 robertto, demencial, 42
 camila, dalto, 24

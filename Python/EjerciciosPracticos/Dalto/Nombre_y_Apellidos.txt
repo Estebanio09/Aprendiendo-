@@ -1,0 +1,14 @@
+los datos son:
+
+Nombre: Camilo
+Apellido: Martinez
+----------------
+Nombre: Francisco
+Apellido: Rodirguez
+----------------
+Nombre: Tiago
+Apellido: Astaiza
+----------------
+Nombre: Lucas
+Apellido: Dalto
+----------------

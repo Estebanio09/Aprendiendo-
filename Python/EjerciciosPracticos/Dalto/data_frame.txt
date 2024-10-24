@@ -1,0 +1,6 @@
+Nombre,apellido,edad
+Camilo,Martinez,25
+Alejandra,Martinez,24
+Arnoldo,Martinez,52
+Astrid,Marin,47
+Marcos,Mileto,125

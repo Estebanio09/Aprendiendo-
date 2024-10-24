@@ -1,0 +1,145 @@
+El método `apply()` en pandas es muy útil cuando necesitas aplicar una función a cada elemento o conjunto de elementos de una **Serie** o un **DataFrame**. Se puede utilizar con funciones personalizadas o funciones de bibliotecas como NumPy.
+
+### Funcionalidad del método `apply()`:
+1. **Funciona tanto en Series como en DataFrames**.
+2. Permite aplicar funciones elementales de Python, funciones de NumPy (llamadas ufuncs) o incluso funciones anónimas (lambdas).
+3. Es útil para realizar transformaciones que no están cubiertas por métodos vectorizados de pandas.
+
+### Estructura básica:
+
+```python
+Series.apply(func, args=(), **kwds)
+DataFrame.apply(func, axis=0, raw=False, result_type=None, args=(), **kwds)
+```
+
+### Parámetros principales:
+- **`func`**: La función que quieres aplicar. Puede ser una función definida por ti o una función de alguna librería como NumPy.
+- **`args`**: Argumentos adicionales para pasar a la función.
+- **`axis`** (solo para DataFrames): Indica si quieres aplicar la función a lo largo de las filas (`axis=1`) o de las columnas (`axis=0`, por defecto).
+- **`raw`**: Si es `True`, pasa la matriz subyacente sin convertirla en Series. Usualmente es mejor dejar esto como `False`.
+- **`result_type`**: Controla el formato del resultado. Opciones son `"expand"`, `"reduce"`, `"broadcast"`.
+
+### Casos prácticos:
+
+1. **Aplicar una función a cada valor en una Serie**:
+
+```python
+import pandas as pd
+
+# Ejemplo de Serie
+s = pd.Series([1, 2, 3, 4])
+
+# Función para elevar al cuadrado
+def square(x):
+    return x ** 2
+
+# Usando apply()
+result = s.apply(square)
+print(result)
+```
+Salida:
+```
+0     1
+1     4
+2     9
+3    16
+dtype: int64
+```
+
+2. **Usar una función con parámetros adicionales**:
+
+```python
+def add_custom_value(x, value):
+    return x + value
+
+s = pd.Series([1, 2, 3])
+result = s.apply(add_custom_value, args=(10,))
+print(result)
+```
+Salida:
+```
+0    11
+1    12
+2    13
+dtype: int64
+```
+
+3. **Usar una función lambda**:
+   Las funciones lambda son útiles cuando necesitas una función pequeña de manera rápida.
+
+```python
+result = s.apply(lambda x: x * 2)
+print(result)
+```
+Salida:
+```
+0    2
+1    4
+2    6
+dtype: int64
+```
+
+4. **Aplicar funciones a un DataFrame**:
+   También puedes aplicar una función a cada fila o columna de un DataFrame.
+
+```python
+df = pd.DataFrame({
+    "A": [1, 2, 3],
+    "B": [10, 20, 30]
+})
+
+# Aplicar una función a cada columna (axis=0)
+result = df.apply(lambda x: x * 2)
+print(result)
+```
+Salida:
+```
+   A   B
+0  2  20
+1  4  40
+2  6  60
+```
+
+### Diferencias con otros métodos:
+- **`map()`**: Solo se usa para Series y aplica funciones de manera individual sobre los valores.
+- **`transform()`**: Similar a `apply()`, pero solo para funciones que retornan una salida del mismo tamaño.
+- **`agg()`**: Se usa cuando quieres realizar agregaciones, como sumas o promedios, sobre todo el conjunto de datos.
+
+### Ejemplos adicionales:
+
+1. **Función NumPy con `apply()`**:
+   Usar funciones de NumPy como `log`:
+
+```python
+import numpy as np
+
+result = s.apply(np.log)
+print(result)
+```
+Salida:
+```
+0    0.000000
+1    0.693147
+2    1.098612
+dtype: float64
+```
+
+2. **Función personalizada con múltiples argumentos**:
+
+```python
+def custom_function(x, a, b):
+    return a * x + b
+
+result = s.apply(custom_function, args=(2, 3))  # f(x) = 2*x + 3
+print(result)
+```
+Salida:
+```
+0     5
+1     7
+2     9
+dtype: int64
+```
+
+### Conclusión:
+`apply()` es un método poderoso que permite realizar transformaciones complejas sobre Series y DataFrames. Su flexibilidad proviene de poder pasarle funciones personalizadas, lo que permite realizar casi cualquier operación que necesites.

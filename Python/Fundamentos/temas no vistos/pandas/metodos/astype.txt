@@ -1,0 +1,98 @@
+La función astype() en Pandas se utiliza para convertir el tipo de datos de una columna o de todo un DataFrame a un tipo específico. Es muy útil cuando quieres asegurarte de que los datos tienen el tipo adecuado para realizar operaciones numéricas, de fecha, o para optimizar el rendimiento.
+
+Sintaxis
+python
+Copiar código
+DataFrame.astype(dtype, copy=True, errors='raise')
+Parámetros
+dtype: El tipo de datos al que quieres convertir. Puede ser un tipo de datos de NumPy (como int, float, str, etc.) o un diccionario que asocie nombres de columnas con los tipos a los que se deben convertir.
+copy (opcional, default True): Si es True, devuelve una copia del DataFrame con los cambios; si es False, realiza los cambios en el objeto original.
+errors (opcional, default 'raise'): Si es 'raise', lanzará un error si la conversión falla. Si es 'ignore', no lanzará errores y mantendrá los datos originales.
+Ejemplos
+Convertir una columna a entero (int): Supongamos que tienes una columna de edades que está como texto y quieres convertirla a enteros.
+
+python
+Copiar código
+import pandas as pd
+
+# Crear un DataFrame
+data = {'nombre': ['Lucas', 'Camila', 'Nicolas'],
+        'edad': ['25', '30', '22']}  # Edades como texto
+df = pd.DataFrame(data)
+
+# Convertir la columna 'edad' a entero
+df['edad'] = df['edad'].astype(int)
+print(df)
+Salida:
+
+python
+Copiar código
+    nombre  edad
+0    Lucas    25
+1   Camila    30
+2  Nicolas    22
+Convertir múltiples columnas a diferentes tipos: Puedes pasar un diccionario a astype() para convertir diferentes columnas a diferentes tipos de datos.
+
+python
+Copiar código
+df = pd.DataFrame({
+    'nombre': ['Lucas', 'Camila', 'Nicolas'],
+    'edad': ['25', '30', '22'],  # Edades como texto
+    'altura': [1.75, 1.68, 1.80]  # Alturas como float
+})
+
+# Convertir 'edad' a entero y 'altura' a string
+df = df.astype({'edad': 'int', 'altura': 'str'})
+print(df)
+Salida:
+
+python
+Copiar código
+    nombre  edad altura
+0    Lucas    25   1.75
+1   Camila    30   1.68
+2  Nicolas    22   1.80
+Convertir todo el DataFrame a un solo tipo de dato: Si quieres convertir todo el DataFrame a un solo tipo (por ejemplo, a texto), también puedes hacerlo.
+
+python
+Copiar código
+df = pd.DataFrame({
+    'nombre': ['Lucas', 'Camila', 'Nicolas'],
+    'edad': [25, 30, 22],
+    'altura': [1.75, 1.68, 1.80]
+})
+
+# Convertir todo el DataFrame a string
+df = df.astype(str)
+print(df)
+Salida:
+
+python
+Copiar código
+    nombre edad altura
+0    Lucas   25   1.75
+1   Camila   30   1.68
+2  Nicolas   22   1.80
+Ejemplo práctico con manejo de errores
+Si tienes datos que no se pueden convertir al tipo que intentas, puedes manejar los errores con el parámetro errors.
+
+python
+Copiar código
+import pandas as pd
+
+data = {'nombre': ['Lucas', 'Camila', 'Nicolas'],
+        'edad': ['25', 'no disponible', '22']}
+
+df = pd.DataFrame(data)
+
+# Intentar convertir la columna 'edad' a entero, ignorando errores
+df['edad'] = df['edad'].astype('int', errors='ignore')
+print(df)
+En este ejemplo, la conversión fallará para 'no disponible', pero como usamos errors='ignore', Pandas simplemente mantendrá el valor original.
+
+Resumen
+La función astype() es muy útil para:
+
+Asegurarte de que las columnas tienen el tipo correcto (por ejemplo, números enteros o flotantes en vez de cadenas de texto).
+Optimizar el uso de memoria al convertir a tipos de datos más eficientes.
+Manejar datos que deben ser convertidos para realizar análisis o cálculos específicos.

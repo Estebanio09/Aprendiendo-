@@ -39,6 +39,7 @@ empleado1.hablar()
 # Estudiante depende de persona tiene las propiedades de persona y agregamos las propiedades de un estudiante
 class Estudiante(Persona):
     def __init__(self, nombre, edad, nacionalidad, universidad, notas) -> None:
+        # en super no pasamos self
         super().__init__(nombre, edad, nacionalidad)
         self.universidad = universidad
         self.notas = notas

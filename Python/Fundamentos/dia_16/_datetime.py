@@ -2,7 +2,7 @@
 
 # Python cuenta con el módulo datetime para manejar fechas y horas.
 
-from datetime import datetime, date, time
+from datetime import datetime, date, time, timedelta
 # print(dir(datetime))
 
 """
@@ -132,7 +132,6 @@ print("Time left for new year:", diff)  # 26 días, 23:01:00
 
 # El objeto timedelta permite definir intervalos de tiempo y calcular diferencias.
 
-from datetime import timedelta
 
 t1 = timedelta(weeks=12, days=10, hours=4, seconds=20)
 t2 = timedelta(days=7, hours=5, minutes=3, seconds=30)

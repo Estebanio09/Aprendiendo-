@@ -1,5 +1,3 @@
-from traceback import print_tb
-
 
 class Personaje:
     def __init__(self, nombre, fuerza, velocidad) -> None:

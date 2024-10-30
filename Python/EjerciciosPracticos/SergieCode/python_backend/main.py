@@ -1,7 +1,5 @@
 # API: Interfaz de programación de aplicaciones, conjunto de reglas para que los programas se puedan comunicar
 # REST: para transferir la información o recursos
-from operator import index
-from re import S
 from typing import List, Optional
 import uuid
 import fastapi

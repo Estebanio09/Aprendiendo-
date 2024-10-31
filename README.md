@@ -1,1 +1,2 @@
 #Un repo donde guardare mi ruta de aprendizaje 
+ - completo un mes y me siento genial hoy cree el juego que Dalto sugirió y lo logre estoy muy contento la motivación es mas alta mas que cuando empece gracias a Dalto a Sergie a Mauro y al creador de 30 días de python 

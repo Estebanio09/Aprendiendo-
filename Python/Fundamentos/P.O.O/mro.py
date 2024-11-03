@@ -7,8 +7,6 @@ Method Resolution Order
 # Si dos clases padres cuentan con métodos de nombres similares cual se ejecuta?
 # Busca en orden en su padre según el orden
 
-from pickle import OBJ
-
 
 class A:
     def hablar(self):

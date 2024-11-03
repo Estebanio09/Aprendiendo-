@@ -1,0 +1,12 @@
+Son principios que se deben deben seguir al momento de escribir el código esto va a facilitar muchas cosas al momento de escalar 
+
+1. Mantenibilidad: fácil de mantener y de modificar en tiempo.
+2. Reusabilidad: poder reutilizar el código reutilizar todos los componentes - módulos, clases y funciones. 
+3. Legibilidad: fácil y claro de leer por otros desarrolladores variables intuitivas, comentar. 
+4. Extensibilidad: El software debe ser permitir extenderse sin afectar el código. 
+
+    S = SRP: principio de responsabilidad único / single responsability principle.
+    O = OCP: principio de abierto/cerrado.
+    L = LSP: principio de sustitución de Liskov
+    I = ISP: principio de segregación de interfaz 
+    D = DIP: principio de inversión de dependencias 

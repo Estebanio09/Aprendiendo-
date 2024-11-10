@@ -23,7 +23,7 @@ month = now.month
 year = now.year
 hour = now.hour
 minute = now.minute
-timestamp = now.timestamp()
+timestamp = now.timestamp() # representación única de un tiempo formato estándar 
 
 print(day, month, year, hour, minute)  # 29 10 2024 3 55
 print("timestamp", timestamp)  # timestamp 1730192126.388094
@@ -33,7 +33,7 @@ print(f"{day}/{month}/{year}, {hour}:{minute}")  # 8/7/2021, 7:38
 
 # Formateo de Fechas con strftime
 
-new_year = datetime(2020, 1, 1)
+new_year = datetime(2020, 1, 1) # establecemos una fecha y en base a esto podemos comenzar con una fecha especifica 
 print(new_year)  # 2020-01-01 00:00:00
 
 # Formato personalizado

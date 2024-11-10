@@ -44,7 +44,7 @@ git commit -m "Descripción de los archivos como comentarios"
 git commit = abre un apartado en VS code para agregar la Descripción
 
 Subir de local a repositorio evitando el area de preparación/Staging
-git commit -a = salta el commit y guarda en el repo 
+git commit "comentario" -a = salta el commit y guarda en el repo 
 
                     Restore, checkout y más 
 
@@ -67,3 +67,40 @@ Git Status
 git status --short = muestran el estatus pero de forma un poco mas clara 
 git status -s = muestran el estatus pero de forma un poco mas clara
     M = modificado 
+    A = archivo nuevo 
+
+            gti diff   diferencia entre versiones 
+
+git show nombre_de_archivo.eje  = con este vemos los cambios del archivo en el area de preparación
+git log    muestra el identificador del commit 
+fit log --oneline   muestra una version reducida de los primeros 7 dígitos
+cambiar la cantidad de dígitos 
+git config --global core.abbrev {cantidad de dígitos sin llaves} para modificar la cantidad de caracteres del los logs reducidos 
+
+ya con los logs reducidos podemos buscar diferencias entre los commits 
+muestran diferencias entre dos commits, pero varían en el tipo de detalle que ofrecen. Aquí te explico cada uno:
+
+git diff #commit #commit 
+Muestra las diferencias completas entre dos commits, incluyendo todas las líneas agregadas, eliminadas o modificadas. Este comando es útil para ver cambios detallados y contextuales de todo el contenido que ha cambiado entre los commits especificados.
+
+git diff --name-only #commit #commit 
+Lista solo los nombres de los archivos que han cambiado entre los dos commits, sin mostrar el contenido de los cambios. Es útil si quieres un resumen rápido para identificar qué archivos han sido modificados, sin ver las modificaciones específicas.
+
+git diff --word-diff #commit #commit
+Muestra las diferencias entre los dos commits con un enfoque en cambios a nivel de palabra dentro de las líneas modificadas, en lugar de mostrar líneas completas como en el primer comando. Esto es útil cuando quieres ver con precisión cómo cambió el texto o código dentro de una línea.
+
+
+Modificar y deshacer un commit 
+
+modificar un commit existente 
+git commit --amend  = se abre una ventana en donde podemos modificar el nombres del archivo y al cerrar todo lo que subimos en el ultimo commit se reemplaza 
+
+modificar commits anteriores no es recomendable ya que es como borrar todo el código nuevo y volver a una version anterior 
+git rebase -i head~{numero de commits a los que regresar}  nos despliega una ventana con los commits veras que los commits inician por pick ese lo reemplazas por edit dependiendo al commit que quieres volver 
+
+Deshacer el ultimo commit 
+git reset --soft {numero de commit}   vuelve al commit indicado y borra los anteriores  
+
+
+
+
